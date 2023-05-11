@@ -22,10 +22,10 @@ new Vue({
             this.jogadorSelecionado = userParam;
             if (urlParams.get("w"))
                 this.pontuacao.vitorias = Number(urlParams.get("w"));
-            if (urlParams.get("e"))
-                this.pontuacao.empates = Number(urlParams.get("e"));
             if (urlParams.get("d"))
-                this.pontuacao.derrotas = Number(urlParams.get("d"));
+                this.pontuacao.empates = Number(urlParams.get("d"));
+            if (urlParams.get("l"))
+                this.pontuacao.derrotas = Number(urlParams.get("l"));
             this.diferenca();
             this.score();
             setInterval(() => {
