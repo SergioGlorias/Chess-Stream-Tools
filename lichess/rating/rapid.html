@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rating</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+        <script defer src="/js/rating.js"></script>
+        <style>
+            p {
+                font-size: xx-large;
+                font-family: "Monospace";
+            }
+            .red {
+                color: red;
+            }
+
+            .green {
+                color: green;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app">
+            <p>
+                <b>Rapid:</b> {{ ratingNow.rapid }}
+                <span
+                    :class="{'red': ratingDiff.rapid < 0, 'green': ratingDiff.rapid >= 0}"
+                    >({{ ratingDiff.rapid }})</span
+                >
+            </p>
+        </div>
+    </body>
+</html>
