@@ -49,7 +49,7 @@ new Vue({
                     this.scoreAll.derrotas = data.count.loss;
                 })
                 .catch((error) => {
-                    console.log(error);
+                    console.error(error);
                 });
         },
         atualizaPontuacao: function () {
@@ -74,7 +74,7 @@ new Vue({
                     this.diferenca();
                 })
                 .catch((error) => {
-                    console.log(error);
+                    console.error(error);
                 });
         },
     },
