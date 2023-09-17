@@ -2,7 +2,7 @@ export async function onRequest(context) {
     const urlParams = new URLSearchParams(context.request.url);
     const userParam = urlParams.get("user");
 
-    if (userParam) {
+    if (!userParam) {
         return new Response("Você precisa fornecer um jogador")
     }
 
