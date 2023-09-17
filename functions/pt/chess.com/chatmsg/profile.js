@@ -50,6 +50,6 @@ export async function onRequest(context) {
         text = text + rapid
     }
 
-    return new Response(`${userParam} tem ${text}`)
+    return new Response(`${userParam} tem ${text}! https://www.chess.com/member/${userParam}`)
 }
   
