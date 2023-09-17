@@ -21,7 +21,7 @@ export async function onRequest(context) {
         return new Response(`${user.username} está com uma marca vermelha!`)
     }
     
-    return new Response(`${user.username} tem ${user.perfs.bullet.rating}${user.perfs.bullet.prov ? "?" : ""} Bullet, ${user.perfs.blitz.rating}${user.perfs.blitz.prov ? "?" : ""} Rapidas, ${user.perfs.rapid.rating}${user.perfs.rapid.prov ? "?" : ""} Semi-Rápidas e ${user.perfs.classical.rating}${user.perfs.classical.prov ? "?" : ""} Classicas! https://lichess.org/@/${user.username}`)
+    return new Response(`${user.username} tem ${user.perfs.bullet.rating}${user.perfs.bullet.prov ? "?" : ""} Bullet, ${user.perfs.blitz.rating}${user.perfs.blitz.prov ? "?" : ""} Rápidas, ${user.perfs.rapid.rating}${user.perfs.rapid.prov ? "?" : ""} Semi-Rápidas e ${user.perfs.classical.rating}${user.perfs.classical.prov ? "?" : ""} Classicas! https://lichess.org/@/${user.username}`)
 
 }
   
