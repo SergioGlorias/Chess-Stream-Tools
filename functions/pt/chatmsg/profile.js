@@ -1,4 +1,4 @@
-export function onRequest(context) {
+export async function onRequest(context) {
     const urlParams = new URLSearchParams(context.request.url);
     const userParam = urlParams.get("user");
 
