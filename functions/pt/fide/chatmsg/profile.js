@@ -19,7 +19,11 @@ export async function onRequest(context) {
     
     let ranting = user.history[0]
 
-    return new Response(`${user.name} tem ${ranting.blitz_rating} Rápidas, ${ranting.rapid_rating} Semi-Rápidas e ${ranting.classical_rating} Classicas! https://ratings.fide.com/profile/${userParam}/chart`)
+    let lastName = user.name.split(", ")[0]
+    let firstName = user.name.split(", ")[1].split(" ")[0]
+    let name = `${lastName}, ${firstName}`
+
+    return new Response(`${name} tem ${ranting.blitz_rating} Rápidas, ${ranting.rapid_rating} Semi-Rápidas e ${ranting.classical_rating} Classicas! https://ratings.fide.com/profile/${userParam}/chart`)
 
 }
   
