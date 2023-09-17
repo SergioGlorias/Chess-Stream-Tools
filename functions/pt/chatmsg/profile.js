@@ -1,6 +1,6 @@
 export async function onRequest(context) {
-    const urlParams = new URLSearchParams(context.request.url);
-    const userParam = urlParams.get("user");
+    const url = new URL(context.request.url);
+    const userParam = url.searchParams.get("user");
 
     if (!userParam) {
         return new Response("Você precisa fornecer um jogador")
