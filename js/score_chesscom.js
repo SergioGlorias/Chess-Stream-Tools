@@ -64,7 +64,6 @@ new Vue({
             fetch("https://api.chess.com/pub/player/" + this.jogadorSelecionado + "/stats", {
                 headers: {
                     Accept: "application/json",
-                    "user-agent": `${this.jogadorSelecionado} (via ${window.location.protocol}//${window.location.hostname})`
                 }
             })
                 .then((response) => response.json())
@@ -84,7 +83,6 @@ new Vue({
             fetch("https://api.chess.com/pub/player/" + this.jogadorSelecionado + "/stats", {
                 headers: {
                     Accept: "application/json",
-                    "user-agent": `${this.jogadorSelecionado} (via ${window.location.protocol}//${window.location.hostname})`
                 }
             })
                 .then((response) => response.json())
