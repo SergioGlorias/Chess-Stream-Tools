@@ -10,7 +10,7 @@ export async function onRequest(context) {
         method: "GET",
         headers: {
             Accept: "application/json",
-            "user-agent": "SergioGlorias"
+            "user-agent": context.env.CHESSCOM_USER_AGENT
         }
     }).then(res => res.json())
 
