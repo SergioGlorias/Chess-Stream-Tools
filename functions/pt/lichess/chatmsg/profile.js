@@ -9,7 +9,8 @@ export async function onRequest(context) {
     let user = await fetch("https://lichess.org/api/user/" + userParam, {
         method: "GET",
         headers: {
-            Accept: "application/json"
+            Accept: "application/json",
+            "user-agent": context.env.LICHESS_USER_AGENT
         }
     }).then(res => res.json())
 
