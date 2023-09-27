@@ -20,8 +20,48 @@ export async function onRequest(context) {
     if (user.tosViolation) {
         return new Response(`${user.username} está com uma marca vermelha!`)
     }
-    
-    return new Response(`${user.username} tem ${user.perfs.bullet.rating}${user.perfs.bullet.prov ? "?" : ""} Bullet, ${user.perfs.blitz.rating}${user.perfs.blitz.prov ? "?" : ""} Rápidas, ${user.perfs.rapid.rating}${user.perfs.rapid.prov ? "?" : ""} Semi-Rápidas e ${user.perfs.classical.rating}${user.perfs.classical.prov ? "?" : ""} Classicas! https://lichess.org/@/${user.username}`)
+
+    let bullet      = user.perfs.bullet.games       == 0    ? `${user.perfs.bullet.rating}${user.perfs.bullet.prov ? "?" : ""} Bullet`             : null
+    let blitz       = user.perfs.blitz.games        == 0    ? `${user.perfs.blitz.rating}${user.perfs.blitz.prov ? "?" : ""} Rápidas`              : null
+    let rapid       = user.perfs.rapid.games        == 0    ? `${user.perfs.rapid.rating}${user.perfs.rapid.prov ? "?" : ""} Semi-Rápidas`         : null
+    let classical   = user.perfs.classical.games    == 0    ? `${user.perfs.classical.rating}${user.perfs.classical.prov ? "?" : ""} Classicas`    : null
+
+    let msg = ""
+
+    if (bullet) {
+        msg += bullet
+    }
+
+    if (blitz) {
+        if (msg.length !== 0) {
+            if (rapid || classical) {
+                msg += ", "
+            } else {
+                msg += " e "
+            }
+        }
+        msg += blitz
+    }
+
+    if (rapid) {
+        if (msg.length !== 0) {
+            if (classical) {
+                msg += ", "
+            } else {
+                msg += " e "
+            }
+        }
+        msg += rapid
+    }
+
+    if (classical) {
+        if (msg.length !== 0) {
+            msg += " e "
+        }
+        msg += classical
+    }
+
+    return new Response(`${user.username} tem ${msg}! https://lichess.org/@/${user.username}`)
 
 }
   
