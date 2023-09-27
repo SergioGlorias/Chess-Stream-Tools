@@ -21,10 +21,10 @@ export async function onRequest(context) {
         return new Response(`${user.username} está com uma marca vermelha!`)
     }
 
-    let bullet      = user.perfs.bullet.games       == 0    ? `${user.perfs.bullet.rating}${user.perfs.bullet.prov ? "?" : ""} Bullet`             : null
-    let blitz       = user.perfs.blitz.games        == 0    ? `${user.perfs.blitz.rating}${user.perfs.blitz.prov ? "?" : ""} Rápidas`              : null
-    let rapid       = user.perfs.rapid.games        == 0    ? `${user.perfs.rapid.rating}${user.perfs.rapid.prov ? "?" : ""} Semi-Rápidas`         : null
-    let classical   = user.perfs.classical.games    == 0    ? `${user.perfs.classical.rating}${user.perfs.classical.prov ? "?" : ""} Classicas`    : null
+    let bullet      = user.perfs.bullet.games       != 0    ? `${user.perfs.bullet.rating}${user.perfs.bullet.prov ? "?" : ""} Bullet`             : null
+    let blitz       = user.perfs.blitz.games        != 0    ? `${user.perfs.blitz.rating}${user.perfs.blitz.prov ? "?" : ""} Rápidas`              : null
+    let rapid       = user.perfs.rapid.games        != 0    ? `${user.perfs.rapid.rating}${user.perfs.rapid.prov ? "?" : ""} Semi-Rápidas`         : null
+    let classical   = user.perfs.classical.games    != 0    ? `${user.perfs.classical.rating}${user.perfs.classical.prov ? "?" : ""} Classicas`    : null
 
     let msg = ""
 
