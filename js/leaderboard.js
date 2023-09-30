@@ -27,6 +27,7 @@ new Vue({
                     let le = []
                     console.log(array)
                     for (const i of array) {
+                        console.log(i)
                         let json = JSON.parse(i)
 
                         le.push({
