@@ -25,6 +25,7 @@ new Vue({
                 .then((data) => {
                     let array = data.split(/\r?\n/)
                     let le = []
+                    console.log(array)
                     for (const i of array) {
                         let json = JSON.parse(i)
 
