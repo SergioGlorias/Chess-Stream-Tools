@@ -24,10 +24,10 @@ new Vue({
                 .then((response) => response.text())
                 .then((data) => {
                     let array = data.split(/\r?\n/)
+                    array.pop()
                     let le = []
                     console.log(array)
                     for (const i of array) {
-                        console.log(i)
                         let json = JSON.parse(i)
 
                         le.push({
