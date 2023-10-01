@@ -1,32 +1,40 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Leaderboard</title>
-        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-        <script defer src="/js/leaderboard.js"></script>
-        <style>
-            p {
-                font-size: xx-large;
-                font-family: "Monospace";
-            }
-            .gainsboro {
-                color: gainsboro;
-            }
 
-            .green {
-                color: green;
-            }
-            .title-color {
-                color: #bf811d;
-            }
-        </style>
-    </head>
+<head>
+    <title>Leaderboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script defer src="/js/leaderboard.js"></script>
+    <style>
+        .gainsboro {
+            color: gainsboro;
+        }
 
-    <body>
-        <div id="app">
-            <p v-for="lead in leaders">
-                <b class="green">{{ lead.rank }}º</b> <b v-if="lead.title" class="title-color">{{ lead.title }}</b> {{ lead.username }} <span class="gainsboro">({{ lead.score }})</span>
-            </p>
-        </div>
-    </body>
+        .green {
+            color: green;
+        }
+
+        .title-color {
+            color: #bf811d;
+        }
+
+        table {
+            font-size: xx-large;
+            font-family: "Monospace";
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <table cellspacing="0" cellpadding="0">
+            <tr v-for="lead in leaders">
+                <td> <b class="green">{{ lead.rank }}º</b> </td>
+                <td> <b v-if="lead.title" class="title-color">{{ lead.title }}</b> {{ lead.username }} </td>
+                <td> <span class="gainsboro">({{ lead.score }})</span></td>
+            <tr>
+        </table>
+    </div>
+</body>
+
 </html>
