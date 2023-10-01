@@ -25,6 +25,9 @@
         td {
             padding-right: 10px;
         }
+        .rank-space {
+            width: 3ch;
+        }
         .user-space {
             width: 24ch;
         }
@@ -35,7 +38,7 @@
     <div id="app">
         <table cellspacing="0" cellpadding="0">
             <tr v-for="lead in leaders">
-                <td> <b class="green">{{ lead.rank }}º</b> </td>
+                <td class="rank-space"> <b class="green">{{ lead.rank }}º</b> </td>
                 <td class="user-space"> <b v-if="lead.title" class="title-color">{{ lead.title }}</b> {{ lead.username }} </td>
                 <td> <span class="gainsboro">({{ lead.score }})</span></td>
             <tr>
