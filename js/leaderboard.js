@@ -8,33 +8,29 @@ new Vue({
         // Verifica se há um usuário na URL
         const urlParams = new URLSearchParams(window.location.search);
         const idParam = urlParams.get("id");
+        const nbParam = urlParams.get("nb") ?? "5";
         if (idParam) {
             this.torneio = idParam;
 
-            this.leaderborad();
+            this.leaderborad(nbParam);
 
             setInterval(() => {
-                this.leaderborad();
+                this.leaderborad(nbParam);
             }, 30000);
         }
     },
     methods: {
-        leaderborad: function () {
-            fetch("https://lichess.org/api/tournament/" + this.torneio + "/results?nb=5")
+        leaderborad: function (nb) {
+            fetch("https://lichess.org/api/tournament/" + this.torneio + "/results?nb=" + nb)
                 .then((response) => response.text())
                 .then((data) => {
-                    let array = data.split(/\r?\n/)
-                    array.pop()
+                    let array = data.split(/\r?\n/).filter(i => i.length)
                     let le = []
                     console.log(array)
                     for (const i of array) {
                         let json = JSON.parse(i)
 
-                        le.push({
-                            rank: json.rank + "º",
-                            score: json.score,
-                            user: `${json.title ?? ""} ${json.username}`.trim()
-                        })
+                        le.push(json)
                     }
 
                     this.leaders = le
