@@ -25,12 +25,7 @@ new Vue({
             fetch("https://lichess.org/api/tournament/" + this.torneio + "/results" + nb)
                 .then((response) => response.text())
                 .then((d) => {
-                    this.leaders = d.split(/\r?\n/).filter(i => i.length).map(m => JSON.parse(m)).map(m => {
-                        if (m.username.length > 15) {
-                            m.username = `${m.username.slice(0,15)}...`
-                        }
-                        return m
-                    })
+                    this.leaders = d.split(/\r?\n/).filter(i => i.length).map(m => JSON.parse(m))
                 })
                 .catch((error) => {
                     console.error(error);
