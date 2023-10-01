@@ -8,8 +8,8 @@ new Vue({
         // Verifica se há um usuário na URL
         const urlParams = new URLSearchParams(window.location.search);
         const idParam = urlParams.get("id");
-        let nbParam = urlParams.get("nb") ?? "5";
-        nbParam = nbParam !== "0" ? `?nb=${nbParam}` : ""
+        let nbParam = parseInt(urlParams.get("nb")) ?? 5;
+        nbParam = nbParam >= 1 ? `?nb=${nbParam}` : ""
         if (idParam) {
             this.torneio = idParam;
 
