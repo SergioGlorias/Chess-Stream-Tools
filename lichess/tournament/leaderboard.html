@@ -36,7 +36,7 @@
         <table cellspacing="0" cellpadding="0">
             <tr v-for="lead in leaders">
                 <td> <b class="green">{{ lead.rank }}º</b> </td>
-                <td> <b v-if="lead.title" class="title-color">{{ lead.title }}</b> {{ lead.username }} </td>
+                <td class="user-space"> <b v-if="lead.title" class="title-color">{{ lead.title }}</b> {{ lead.username }} </td>
                 <td> <span class="gainsboro">({{ lead.score }})</span></td>
             <tr>
         </table>
