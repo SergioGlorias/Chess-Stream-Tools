@@ -8,7 +8,8 @@ new Vue({
         // Verifica se há um usuário na URL
         const urlParams = new URLSearchParams(window.location.search);
         const idParam = urlParams.get("id");
-        const nbParam = urlParams.get("nb") ?? "5";
+        let nbParam = urlParams.get("nb") ?? "5";
+        nbParam = nbParam !== "0" ? `?nb=${nbParam}` : ""
         if (idParam) {
             this.torneio = idParam;
 
@@ -21,10 +22,10 @@ new Vue({
     },
     methods: {
         leaderborad: function (nb) {
-            fetch("https://lichess.org/api/tournament/" + this.torneio + "/results" + nb !== "0" ? ("?nb=" + nb) : "")
+            fetch("https://lichess.org/api/tournament/" + this.torneio + "/results" + nb)
                 .then((response) => response.text())
-                .then((data) => {
-                    let array = data.split(/\r?\n/).filter(i => i.length)
+                .then((d) => {
+                    let array = d.split(/\r?\n/).filter(i => i.length)
                     let le = []
                     console.log(array)
                     for (const i of array) {
