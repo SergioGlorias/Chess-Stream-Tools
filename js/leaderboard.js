@@ -21,7 +21,7 @@ new Vue({
     },
     methods: {
         leaderborad: function (nb) {
-            fetch("https://lichess.org/api/tournament/" + this.torneio + "/results?nb=" + nb)
+            fetch("https://lichess.org/api/tournament/" + this.torneio + "/results" + nb !== 0 ? "?nb=" + nb : "")
                 .then((response) => response.text())
                 .then((data) => {
                     let array = data.split(/\r?\n/).filter(i => i.length)
