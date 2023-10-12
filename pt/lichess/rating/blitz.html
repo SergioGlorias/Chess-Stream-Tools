@@ -4,25 +4,13 @@
         <title>Rating</title>
         <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
         <script defer src="/js/rating.js"></script>
-        <style>
-            p {
-                font-size: xx-large;
-                font-family: "Monospace";
-            }
-            .red {
-                color: red;
-            }
-
-            .green {
-                color: green;
-            }
-        </style>
+        <link rel="stylesheet" href="/css/ranting.css">
     </head>
 
     <body>
         <div id="app">
             <p>
-                <b>Blitz:</b> {{ ratingNow.blitz }}
+                <b>Rápidas:</b> {{ ratingNow.blitz }}
                 <span
                     :class="{'red': ratingDiff.blitz < 0, 'green': ratingDiff.blitz >= 0}"
                     >({{ ratingDiff.blitz }})</span
