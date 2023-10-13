@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Rating</title>
-        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-        <script defer src="/js/rating.js"></script>
-        <link rel="stylesheet" href="/css/ranting.css">
-    </head>
+  <head>
+    <title>Rating</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script defer src="/js/rating.js"></script>
+    <link rel="stylesheet" href="/css/ranting.css" />
+  </head>
 
-    <body>
-        <div id="app">
-            <p>
-                <b>Correspondência:</b> {{ ratingNow.correspondence }}
-                <span
-                    :class="{'red': ratingDiff.correspondence < 0, 'green': ratingDiff.correspondence >= 0}"
-                    >({{ ratingDiff.correspondence }})</span
-                >
-            </p>
-        </div>
-    </body>
+  <body>
+    <div id="app">
+      <p>
+        <b>Correspondência:</b> {{ ratingNow.correspondence }}
+        <span
+          :class="{'red': ratingDiff.correspondence < 0, 'green': ratingDiff.correspondence >= 0}"
+          >({{ ratingDiff.correspondence }})</span
+        >
+      </p>
+    </div>
+  </body>
 </html>

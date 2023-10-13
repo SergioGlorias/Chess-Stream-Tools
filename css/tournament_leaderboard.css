@@ -1,0 +1,25 @@
+.gainsboro {
+  color: gainsboro;
+}
+
+.green {
+  color: green;
+}
+
+.title-color {
+  color: #bf811d;
+}
+
+table {
+  font-size: xx-large;
+  font-family: "Monospace";
+}
+td {
+  padding-right: 10px;
+}
+.rank-space {
+  width: 3ch;
+}
+.user-space {
+  width: 24ch;
+}
