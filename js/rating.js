@@ -2,6 +2,7 @@ new Vue({
   el: "#app",
   data: {
     jogadorSelecionado: null,
+    linkFetch: null,
     ratingNow: {
       bullet: 0,
       blitz: 0,
@@ -30,12 +31,10 @@ new Vue({
   created() {
     // Verifica se há um usuário na URL
     const urlParams = new URLSearchParams(window.location.search);
-    const userParam = urlParams.get("user");
-    if (userParam) {
-      this.jogadorSelecionado = userParam;
-
+    this.jogadorSelecionado = urlParams.get("user");
+    if (this.jogadorSelecionado) {
+    this.linkFetch = `https://lichess.org/api/user/${this.jogadorSelecionado}`
       this.rating();
-
       setInterval(() => {
         this.atualizaRating();
       }, 30000);
@@ -43,7 +42,7 @@ new Vue({
   },
   methods: {
     rating: function () {
-      fetch("https://lichess.org/api/user/" + this.jogadorSelecionado)
+      fetch(this.linkFetch)
         .then((response) => response.json())
         .then((data) => {
           this.ratingNow.bullet = data.perfs.bullet.rating;
@@ -69,7 +68,7 @@ new Vue({
         });
     },
     atualizaRating: function () {
-      fetch("https://lichess.org/api/user/" + this.jogadorSelecionado)
+      fetch(this.linkFetch)
         .then((response) => response.json())
         .then((data) => {
           this.ratingNow.bullet = data.perfs.bullet.rating;

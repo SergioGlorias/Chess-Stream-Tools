@@ -2,6 +2,7 @@ new Vue({
   el: "#app",
   data: {
     jogadorSelecionado: null,
+    linkFetch: null,
     pontuacao: {
       vitorias: 0,
       empates: 0,
@@ -17,15 +18,12 @@ new Vue({
   created() {
     // Verifica se há um usuário na URL
     const urlParams = new URLSearchParams(window.location.search);
-    const userParam = urlParams.get("user");
-    if (userParam) {
-      this.jogadorSelecionado = userParam;
-      if (urlParams.get("w"))
-        this.pontuacao.vitorias = Number(urlParams.get("w"));
-      if (urlParams.get("d"))
-        this.pontuacao.empates = Number(urlParams.get("d"));
-      if (urlParams.get("l"))
-        this.pontuacao.derrotas = Number(urlParams.get("l"));
+    this.jogadorSelecionado = urlParams.get("user");
+    if (this.jogadorSelecionado) {
+      this.linkFetch = `https://lichess.org/api/user/${this.jogadorSelecionado}`;
+      this.pontuacao.vitorias = Number(urlParams.get("w") ?? "0");
+      this.pontuacao.empates = Number(urlParams.get("d") ?? "0");
+      this.pontuacao.derrotas = Number(urlParams.get("l") ?? "0");
       this.diferenca();
       this.score();
       setInterval(() => {
@@ -41,7 +39,7 @@ new Vue({
         this.pontuacao.derrotas;
     },
     score: function () {
-      fetch("https://lichess.org/api/user/" + this.jogadorSelecionado)
+      fetch(this.linkFetch)
         .then((response) => response.json())
         .then((data) => {
           this.scoreAll.vitorias = data.count.win;
@@ -53,7 +51,7 @@ new Vue({
         });
     },
     atualizaPontuacao: function () {
-      fetch("https://lichess.org/api/user/" + this.jogadorSelecionado)
+      fetch(this.linkFetch)
         .then((response) => response.json())
         .then((data) => {
           if (data.count.win !== this.scoreAll.vitorias) {

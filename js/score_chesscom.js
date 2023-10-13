@@ -2,6 +2,7 @@ new Vue({
   el: "#app",
   data: {
     jogadorSelecionado: null,
+    linkFetch: null,
     pontuacao: {
       vitorias: 0,
       empates: 0,
@@ -17,15 +18,12 @@ new Vue({
   created() {
     // Verifica se há um usuário na URL
     const urlParams = new URLSearchParams(window.location.search);
-    const userParam = urlParams.get("user");
-    if (userParam) {
-      this.jogadorSelecionado = userParam;
-      if (urlParams.get("w"))
-        this.pontuacao.vitorias = Number(urlParams.get("w"));
-      if (urlParams.get("d"))
-        this.pontuacao.empates = Number(urlParams.get("d"));
-      if (urlParams.get("l"))
-        this.pontuacao.derrotas = Number(urlParams.get("l"));
+    this.jogadorSelecionado = urlParams.get("user");
+    if (this.jogadorSelecionado) {
+      this.linkFetch = `https://api.chess.com/pub/player/${this.jogadorSelecionado}/stats`;
+      this.pontuacao.vitorias = Number(urlParams.get("w") ?? "0");
+      this.pontuacao.empates = Number(urlParams.get("d") ?? "0");
+      this.pontuacao.derrotas = Number(urlParams.get("l") ?? "0");
       this.diferenca();
       this.score();
       setInterval(() => {
@@ -60,16 +58,11 @@ new Vue({
       };
     },
     score: function () {
-      fetch(
-        "https://api.chess.com/pub/player/" +
-          this.jogadorSelecionado +
-          "/stats",
-        {
-          headers: {
-            Accept: "application/json",
-          },
-        }
-      )
+      fetch(this.linkFetch, {
+        headers: {
+          Accept: "application/json",
+        },
+      })
         .then((response) => response.json())
         .then((data) => {
           let count = this.soma(data);
@@ -83,16 +76,11 @@ new Vue({
         });
     },
     atualizaPontuacao: function () {
-      fetch(
-        "https://api.chess.com/pub/player/" +
-          this.jogadorSelecionado +
-          "/stats",
-        {
-          headers: {
-            Accept: "application/json",
-          },
-        }
-      )
+      fetch(this.linkFetch, {
+        headers: {
+          Accept: "application/json",
+        },
+      })
         .then((response) => response.json())
         .then((data) => {
           let count = this.soma(data);
