@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scoreboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script defer src="/js/match.js"></script>
+    <link rel="stylesheet" href="/css/match.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <table>
+        <thead>
+          <tr>
+            <th>{{ user1 }}</th>
+            <th>{{ user2 }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              {{ pontuacao.user1 }}
+              <span :class="{'no-win': pontuacao.user1 <= pontuacao.user2}"
+                >🏆</span
+              >
+            </td>
+            <td>
+              {{ pontuacao.user2 }}
+              <span :class="{'no-win': pontuacao.user1 >= pontuacao.user2}"
+                >🏆</span
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

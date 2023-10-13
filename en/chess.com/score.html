@@ -1,40 +1,32 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>Scoreboard</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script defer src="/js/score_chesscom.js"></script>
-    <style>
-        table, tr, td, th {
-            border-collapse: collapse;
-            padding: 10px;
-            border: 1px solid;
-        }
-    </style>
-</head>
+    <link rel="stylesheet" href="/css/score_en.css" />
+  </head>
 
-<body>
+  <body>
     <div id="app">
-        <table>
-            <thead>
-                <tr>
-                    <th>Win</th>
-                    <th>Draw</th>
-                    <th>Loss</th>
-                    <th>Difference</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{ pontuacao.vitorias }}</td>
-                    <td>{{ pontuacao.empates }}</td>
-                    <td>{{ pontuacao.derrotas }}</td>
-                    <td>{{ pontuacao.diferenca }}</td>
-                </tr>
-            </tbody>
-        </table>
+      <table>
+        <thead>
+          <tr>
+            <th>Win</th>
+            <th>Draw</th>
+            <th>Loss</th>
+            <th>Diff</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ pontuacao.vitorias }}</td>
+            <td>{{ pontuacao.empates }}</td>
+            <td>{{ pontuacao.derrotas }}</td>
+            <td>{{ pontuacao.diferenca }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-</body>
-
+  </body>
 </html>

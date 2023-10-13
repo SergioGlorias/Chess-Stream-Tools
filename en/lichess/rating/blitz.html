@@ -1,33 +1,21 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Rating</title>
-        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-        <script defer src="/js/rating.js"></script>
-        <style>
-            p {
-                font-size: xx-large;
-                font-family: "Monospace";
-            }
-            .red {
-                color: red;
-            }
+  <head>
+    <title>Rating</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script defer src="/js/rating.js"></script>
+    <link rel="stylesheet" href="/css/ranting.css" />
+  </head>
 
-            .green {
-                color: green;
-            }
-        </style>
-    </head>
-
-    <body>
-        <div id="app">
-            <p>
-                <b>Blitz:</b> {{ ratingNow.blitz }}
-                <span
-                    :class="{'red': ratingDiff.blitz < 0, 'green': ratingDiff.blitz >= 0}"
-                    >({{ ratingDiff.blitz }})</span
-                >
-            </p>
-        </div>
-    </body>
+  <body>
+    <div id="app">
+      <p>
+        <b>Blitz:</b> {{ ratingNow.blitz }}
+        <span
+          :class="{'red': ratingDiff.blitz < 0, 'green': ratingDiff.blitz >= 0}"
+          >({{ ratingDiff.blitz }})</span
+        >
+      </p>
+    </div>
+  </body>
 </html>

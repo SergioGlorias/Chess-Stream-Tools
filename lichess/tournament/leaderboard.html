@@ -1,49 +1,26 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>Leaderboard</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script defer src="/js/leaderboard.js"></script>
-    <style>
-        .gainsboro {
-            color: gainsboro;
-        }
+    <link rel="stylesheet" href="/css/tournament_leaderboard.css" />
+  </head>
 
-        .green {
-            color: green;
-        }
-
-        .title-color {
-            color: #bf811d;
-        }
-
-        table {
-            font-size: xx-large;
-            font-family: "Monospace";
-        }
-        td {
-            padding-right: 10px;
-        }
-        .rank-space {
-            width: 3ch;
-        }
-        .user-space {
-            width: 24ch;
-        }
-    </style>
-</head>
-
-<body>
+  <body>
     <div id="app">
-        <table cellspacing="0" cellpadding="0">
-            <tr v-for="lead in leaders">
-                <td class="rank-space"><b class="green">{{ lead.rank }}º</b></td>
-                <td class="user-space"><b v-if="lead.title" class="title-color">{{ lead.title }}</b> {{ lead.username }}</td>
-                <td><span class="gainsboro">({{ lead.score }})</span></td>
-            <tr>
-        </table>
-    </div>
-</body>
+      <table cellspacing="0" cellpadding="0">
+        <tr v-for="lead in leaders">
+          <td class="rank-space"><b class="green">{{ lead.rank }}º</b></td>
+          <td class="user-space">
+            <b v-if="lead.title" class="title-color">{{ lead.title }}</b> {{
+            lead.username }}
+          </td>
+          <td><span class="gainsboro">({{ lead.score }})</span></td>
+        </tr>
 
+        <tr></tr>
+      </table>
+    </div>
+  </body>
 </html>
