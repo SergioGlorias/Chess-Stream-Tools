@@ -20,7 +20,7 @@ new Vue({
     const urlParams = new URLSearchParams(window.location.search);
     this.jogadorSelecionado = urlParams.get("user");
     if (this.jogadorSelecionado) {
-      this.linkFetch = `https://api.chess.com/pub/player/${this.jogadorSelecionado}/stats?noCache=${(Math.random() + 1).toString(36).substring(7)}`;
+      this.linkFetch = `https://api.chess.com/pub/player/${this.jogadorSelecionado}/stats`;
       this.pontuacao.vitorias = Number(urlParams.get("w") ?? "0");
       this.pontuacao.empates = Number(urlParams.get("d") ?? "0");
       this.pontuacao.derrotas = Number(urlParams.get("l") ?? "0");
@@ -58,7 +58,7 @@ new Vue({
       };
     },
     score: function () {
-      fetch(this.linkFetch, {
+      fetch(this.linkFetch + `?noCache=${(Math.random() + 1).toString(36).substring(7)}`, {
         headers: {
           Accept: "application/json",
         },
@@ -76,7 +76,7 @@ new Vue({
         });
     },
     atualizaPontuacao: function () {
-      fetch(this.linkFetch, {
+      fetch(this.linkFetch + `?noCache=${(Math.random() + 1).toString(36).substring(7)}`, {
         headers: {
           Accept: "application/json",
         },
