@@ -21,5 +21,7 @@ td {
   width: 3ch;
 }
 .user-space {
+  color: #fff;
   width: 24ch;
+  font-weight: bold;
 }
