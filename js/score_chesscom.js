@@ -58,7 +58,7 @@ new Vue({
       };
     },
     score: function () {
-      fetch(this.linkFetch, {
+      fetch(this.linkFetch + `?noCache=${(Math.random() + 1).toString(36).substring(7)}`, {
         headers: {
           Accept: "application/json",
         },
@@ -76,7 +76,7 @@ new Vue({
         });
     },
     atualizaPontuacao: function () {
-      fetch(this.linkFetch, {
+      fetch(this.linkFetch + `?noCache=${(Math.random() + 1).toString(36).substring(7)}`, {
         headers: {
           Accept: "application/json",
         },
