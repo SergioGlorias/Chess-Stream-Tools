@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Leaderboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script defer src="/js/leaderboardnames.js"></script>
+    <link rel="stylesheet" href="/css/tournament_leaderboard.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <table cellspacing="0" cellpadding="0">
+        <tr v-for="lead in leaders">
+          <td class="user-space">
+            <b v-if="lead.title" class="title-color">{{ lead.title }}</b> <span v-if="lead.realName">{{
+            lead.realName }}</span><span v-else>** {{ lead.username }} **</span>
+          </td>
+        </tr>
+        <tr></tr>
+      </table>
+    </div>
+  </body>
+</html>
